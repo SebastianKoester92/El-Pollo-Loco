@@ -24,6 +24,10 @@ class MovableObject {
        return this.y < 135; 
     }
 
+    draw(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
@@ -45,12 +49,10 @@ class MovableObject {
     }
 
     moveRight() {
-        this.otherDirection = false;
         this.x += this.speed;
     }
 
     moveLeft() {
-        this.otherDirection = true;
         this.x -= this.speed;  
     }
 
