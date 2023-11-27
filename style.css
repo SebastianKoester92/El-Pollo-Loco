@@ -15,6 +15,10 @@ body {
     background-position: center;
     font-family: 'zabars', Arial, Helvetica, sans-serif;
 }
+.header {
+    font-size: 64px;
+    letter-spacing: 3px;
+}
 
 canvas {
     background-color: black;
