@@ -28,7 +28,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
-        }, 200);
+        }, 80);
     }
 
     checkThrowObjects() {
@@ -40,9 +40,14 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach( (enemy) => {
-            if(this.character.isColliding(enemy)) {
+            if(this.character.isColliding(enemy) && !this.character.isAboveGround()) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
+            } else {
+                if(this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                    this.character.jump();
+                    enemy.chickenAlive = false;
+                }
             }
         });
     }

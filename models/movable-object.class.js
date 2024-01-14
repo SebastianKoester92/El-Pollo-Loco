@@ -5,6 +5,12 @@ class MovableObject extends DrawableObject {
     acceleration = 3;
     energy = 100;
     lastHit = 0;
+    offset = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+    };
 
     applyGravity() {
         setInterval(() => {
@@ -26,7 +32,7 @@ class MovableObject extends DrawableObject {
     isColliding(mo) {
         return this.x + this.width > mo.x &&
             this.y + this.height > mo.y && 
-            this.x < mo.x && 
+            this.x < mo.x + mo.width && 
             this.y < mo.y + mo.height;
     }
 
