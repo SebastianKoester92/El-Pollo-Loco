@@ -21,6 +21,6 @@ class CollectableCoin extends MovableObject {
     animate() {
         setInterval(() => {
             this.playAnimation(this.walkingImages);
-        }, 700);
+        }, 500);
     }
 }

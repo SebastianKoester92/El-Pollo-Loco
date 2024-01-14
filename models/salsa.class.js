@@ -13,7 +13,6 @@ class CollectableSalsa extends MovableObject {
         super().loadImage(this.walkingImages[0]);
         this.loadImages(this.walkingImages);
         this.x = 400 + Math.random() * 1700;
-        this.y = 70 + Math.random() * 280;
         this.animate();
     }
     
@@ -21,6 +20,6 @@ class CollectableSalsa extends MovableObject {
     animate() {
         setInterval(() => {
             this.playAnimation(this.walkingImages);
-        }, 700);
+        }, 500);
     }
 }

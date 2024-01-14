@@ -13,6 +13,11 @@ const level1 = new Level(
         new CollectableCoin(),
         new CollectableCoin(),
         new CollectableCoin(),
+        
+    ],
+    [
+        new CollectableSalsa(),
+        new CollectableSalsa(),
         new CollectableSalsa(),
         new CollectableSalsa(),
         new CollectableSalsa(),

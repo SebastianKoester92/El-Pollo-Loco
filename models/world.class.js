@@ -26,30 +26,73 @@ class World {
 
     run() {
         setInterval(() => {
-            this.checkCollisions();
             this.checkThrowObjects();
+            this.checkCollisions();
         }, 80);
     }
 
     checkThrowObjects() {
-        if(this.keyboard.d) {
+        if(this.keyboard.d && this.statusBarBottle.percentage > 0) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.throwableObjects.push(bottle);
+            this.statusBarBottle.percentage -= 20;
+            this.statusBarBottle.setPercentage(this.statusBarBottle.percentage);
         }
     }
 
     checkCollisions() {
-        this.level.enemies.forEach( (enemy) => {
-            if(this.character.isColliding(enemy) && !this.character.isAboveGround()) {
+        this.characterCollisionWithEnemy();
+        this.collisionWithCoin();
+        this.collisionWithSalsa();
+    }
+
+    characterCollisionWithEnemy() {
+        this.level.enemies.forEach( (enemy, i) => {
+            if(this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.chickenAlive == true) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
             } else {
-                if(this.character.isColliding(enemy) && this.character.isAboveGround()) {
+                if(this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.chickenAlive == true) {
                     this.character.jump();
-                    enemy.chickenAlive = false;
+                    enemy.chickenAlive = false;       
+                    this.removeChickenFromMap(i); 
                 }
             }
-        });
+        }); 
+    }
+
+    collisionWithCoin() {
+        this.level.collectableCoins.forEach( (coin, i) => {
+            if(this.character.isColliding(coin)) {
+                this.statusBarCoin.percentage += 20;
+                this.statusBarCoin.setPercentage(this.statusBarCoin.percentage);
+                this.removeCoinFromMap(i);
+            }
+        }); 
+    }
+
+    collisionWithSalsa() {
+        this.level.collectableSalsa.forEach( (salsa, i) => {
+            if(this.character.isColliding(salsa) && this.statusBarBottle.percentage < 100 ) {
+                this.statusBarBottle.percentage += 20;
+                this.statusBarBottle.setPercentage(this.statusBarBottle.percentage);
+                this.removeSalsaFromMap(i);
+            }
+        }); 
+    }
+
+    removeChickenFromMap(i) {
+        setTimeout(() => {
+            this.level.enemies.splice(i, 1);
+        }, 1500);    
+    }
+
+    removeCoinFromMap(i) {
+        this.level.collectableCoins.splice(i, 1); 
+    }
+
+    removeSalsaFromMap(i) {
+        this.level.collectableSalsa.splice(i, 1); 
     }
 
     draw() {
@@ -59,11 +102,12 @@ class World {
 
         this.addObjectsToMap(this.level.backgroundObjects);
 
-        this.addToMap(this.character);
         this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.collectableItems);
+        this.addObjectsToMap(this.level.collectableCoins);
+        this.addObjectsToMap(this.level.collectableSalsa);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObjects);
+        this.addToMap(this.character);
 
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusBarHealth);
