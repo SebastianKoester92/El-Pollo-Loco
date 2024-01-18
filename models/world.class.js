@@ -28,12 +28,12 @@ class World {
         setInterval(() => {
             this.checkThrowObjects();
             this.checkCollisions();
-        }, 80);
+        }, 50);
     }
 
     checkThrowObjects() {
-        if(this.keyboard.d && this.statusBarBottle.percentage > 0) {
-            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+        if(this.keyboard.d && this.statusBarBottle.percentage > 0 && this.throwableObjects.length == 0) {
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 120);
             this.throwableObjects.push(bottle);
             this.statusBarBottle.percentage -= 20;
             this.statusBarBottle.setPercentage(this.statusBarBottle.percentage);
@@ -42,6 +42,8 @@ class World {
 
     checkCollisions() {
         this.characterCollisionWithEnemy();
+        this.bottleCollisionWithGround();
+        this.bottleCollisionWithEnemy();
         this.collisionWithCoin();
         this.collisionWithSalsa();
     }
@@ -55,10 +57,36 @@ class World {
                 if(this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.chickenAlive == true) {
                     this.character.jump();
                     enemy.chickenAlive = false;       
-                    this.removeChickenFromMap(i); 
+                    this.removeChickenFromMap(); 
                 }
             }
         }); 
+    }
+
+    bottleCollisionWithEnemy() {
+        this.throwableObjects.forEach( (bottle, i) => {
+            this.level.enemies.forEach( (enemy, y) => {
+                if(bottle.isColliding(enemy)) {
+                    enemy.chickenAlive = false;
+                    this.removeChickenFromMap(y);
+                    bottle.bottleSplashIndex = 1;
+                    bottle.bottleFlyIndex = 0;
+                    bottle.hitIndex = 1;
+                    this.removeSplashedBottle(i);  
+                }
+            });   
+        });
+    }
+
+    bottleCollisionWithGround() {
+        this.throwableObjects.forEach( (bottle, i) => {
+            if(bottle.y > 310) {
+                bottle.bottleSplashIndex = 1;
+                bottle.bottleFlyIndex = 0;
+                bottle.hitIndex = 1;
+                this.removeSplashedBottle(i);  
+            }   
+        });  
     }
 
     collisionWithCoin() {
@@ -81,10 +109,20 @@ class World {
         }); 
     }
 
-    removeChickenFromMap(i) {
+    removeSplashedBottle(i){
         setTimeout(() => {
-            this.level.enemies.splice(i, 1);
-        }, 1500);    
+            this.throwableObjects.splice(i, 1);
+        }, 500) ;
+    }
+
+    removeChickenFromMap() {
+        setTimeout(() => {
+            this.level.enemies.forEach( (enemy, i) => {
+                if(!enemy.chickenAlive) {
+                    this.level.enemies.splice(i, 1);  
+                } 
+            });
+        }, 500);    
     }
 
     removeCoinFromMap(i) {
