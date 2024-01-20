@@ -8,6 +8,7 @@ class World {
     statusBarHealth = new StatusBarHealth();
     statusBarBottle = new StatusBarBottle();
     statusBarCoin = new StatusBarCoin();
+    statusBarHealthEndboss = new StatusBarHealthEndboss();
     throwableObjects = [];
     enemyGotHitIndex = 0;
 
@@ -58,7 +59,7 @@ class World {
             } else {
                 if(this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.health >= 1) {
                     this.character.jump();
-                    enemy.health -= 25;       
+                    enemy.health -= 20;       
                     this.removeChickenFromMap(); 
                 }
             }
@@ -70,13 +71,16 @@ class World {
             this.level.enemies.forEach( (enemy, y) => {
                 if(bottle.isColliding(enemy) && this.enemyGotHitIndex == 0) {
                     this.enemyGotHitIndex = 1;
-                    enemy.health -= 25;  
+                    enemy.health -= 20;
+                    if(enemy.enemyType == 2) {
+                        this.statusBarHealthEndboss.percentage = enemy.health;
+                        this.statusBarHealthEndboss.setPercentage(this.statusBarHealthEndboss.percentage);   
+                    } 
                     this.removeChickenFromMap(y);
                     bottle.bottleSplashIndex = 1;
                     bottle.bottleFlyIndex = 0;
                     bottle.hitIndex = 1;
-                    this.removeSplashedBottle(i);
-                       
+                    this.removeSplashedBottle(i);     
                 }
             });   
         });
@@ -150,6 +154,7 @@ class World {
         this.addObjectsToMap(this.level.collectableCoins);
         this.addObjectsToMap(this.level.collectableSalsa);
         this.addObjectsToMap(this.level.enemies);
+        this.addToMap(this.statusBarHealthEndboss);
         this.addObjectsToMap(this.throwableObjects);
         this.addToMap(this.character);
 
