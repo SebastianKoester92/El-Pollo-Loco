@@ -9,6 +9,7 @@ class World {
     statusBarBottle = new StatusBarBottle();
     statusBarCoin = new StatusBarCoin();
     throwableObjects = [];
+    enemyGotHitIndex = 0;
 
 
     constructor(canvas, keyboard) {
@@ -36,6 +37,7 @@ class World {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 120);
             this.throwableObjects.push(bottle);
             this.statusBarBottle.percentage -= 20;
+            this.enemyGotHitIndex = 0;
             this.statusBarBottle.setPercentage(this.statusBarBottle.percentage);
         }
     }
@@ -43,20 +45,20 @@ class World {
     checkCollisions() {
         this.characterCollisionWithEnemy();
         this.bottleCollisionWithGround();
-        this.bottleCollisionWithEnemy();
+        this.bottleCollisionWithEnemy();  
         this.collisionWithCoin();
         this.collisionWithSalsa();
     }
 
     characterCollisionWithEnemy() {
         this.level.enemies.forEach( (enemy, i) => {
-            if(this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.chickenAlive == true) {
+            if(this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.health >= 1) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
             } else {
-                if(this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.chickenAlive == true) {
+                if(this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.health >= 1) {
                     this.character.jump();
-                    enemy.chickenAlive = false;       
+                    enemy.health -= 25;       
                     this.removeChickenFromMap(); 
                 }
             }
@@ -66,17 +68,21 @@ class World {
     bottleCollisionWithEnemy() {
         this.throwableObjects.forEach( (bottle, i) => {
             this.level.enemies.forEach( (enemy, y) => {
-                if(bottle.isColliding(enemy)) {
-                    enemy.chickenAlive = false;
+                if(bottle.isColliding(enemy) && this.enemyGotHitIndex == 0) {
+                    this.enemyGotHitIndex = 1;
+                    enemy.health -= 25;  
                     this.removeChickenFromMap(y);
                     bottle.bottleSplashIndex = 1;
                     bottle.bottleFlyIndex = 0;
                     bottle.hitIndex = 1;
-                    this.removeSplashedBottle(i);  
+                    this.removeSplashedBottle(i);
+                       
                 }
             });   
         });
     }
+
+
 
     bottleCollisionWithGround() {
         this.throwableObjects.forEach( (bottle, i) => {
@@ -112,17 +118,17 @@ class World {
     removeSplashedBottle(i){
         setTimeout(() => {
             this.throwableObjects.splice(i, 1);
-        }, 500) ;
+        }, 300) ;
     }
 
     removeChickenFromMap() {
         setTimeout(() => {
             this.level.enemies.forEach( (enemy, i) => {
-                if(!enemy.chickenAlive) {
+                if(enemy.health <= 0) {
                     this.level.enemies.splice(i, 1);  
                 } 
             });
-        }, 500);    
+        }, 700);    
     }
 
     removeCoinFromMap(i) {
