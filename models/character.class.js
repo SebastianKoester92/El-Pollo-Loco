@@ -4,6 +4,13 @@ class Character extends MovableObject {
     width = 140;
     y = 135; 
     speed = 10;
+    offset = {
+        top: 130,
+        left: 40,
+        right: 80,
+        bottom: 150
+    };
+
     walkingImages = [
         '../img/2_character_pepe/2_walk/W-21.png',
         '../img/2_character_pepe/2_walk/W-22.png',
@@ -38,13 +45,6 @@ class Character extends MovableObject {
         '../img/2_character_pepe/4_hurt/H-42.png',
         '../img/2_character_pepe/4_hurt/H-43.png'
     ];
-
-    offset = {
-        top: 120,
-        bottom: 30,
-        left: 40,
-        right: 30
-    };
 
     world;
     walking_sound = new Audio('../audio/running.mp3');

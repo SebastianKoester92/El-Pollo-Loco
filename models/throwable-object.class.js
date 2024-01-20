@@ -1,4 +1,11 @@
 class ThrowableObject extends MovableObject {
+    
+    offset = {
+        top: 20,
+        left: 20,
+        right: 40,
+        bottom: 40
+    };
 
     walkingImages =[
         '../img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',

@@ -3,6 +3,12 @@ class CollectableSalsa extends MovableObject {
     y = 350;
     width = 60;
     height = 70;
+    offset = {
+        top: 15,
+        left: 28,
+        right: 43,
+        bottom: 23
+    };
 
     walkingImages =[
         '../img/6_salsa_bottle/1_salsa_bottle_on_ground.png',
