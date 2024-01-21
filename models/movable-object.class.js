@@ -5,6 +5,7 @@ class MovableObject extends DrawableObject {
     acceleration = 3;
     energy = 100;
     lastHit = 0;
+    characterPositionX = 0;
     offset = {
         top: 0,
         left: 0,
@@ -67,7 +68,7 @@ class MovableObject extends DrawableObject {
     }
 
     moveLeft() {
-        this.x -= this.speed;  
+        this.x -= this.speed;    
     }
 
     jump() {

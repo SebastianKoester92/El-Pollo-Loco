@@ -11,10 +11,18 @@ class Endboss extends MovableObject {
         right: 60,
         bottom: 150
     };
+    hurtIndex = 0;
     deadIndex = 0;
     dead_sound = new Audio('../audio/dead_chicken.wav');
 
     walkingImages = [
+        '../img/4_enemie_boss_chicken/1_walk/G1.png',
+        '../img/4_enemie_boss_chicken/1_walk/G2.png',
+        '../img/4_enemie_boss_chicken/1_walk/G3.png',
+        '../img/4_enemie_boss_chicken/1_walk/G4.png'
+    ];
+
+    alertImages = [
         '../img/4_enemie_boss_chicken/2_alert/G5.png',
         '../img/4_enemie_boss_chicken/2_alert/G6.png',
         '../img/4_enemie_boss_chicken/2_alert/G7.png',
@@ -23,6 +31,12 @@ class Endboss extends MovableObject {
         '../img/4_enemie_boss_chicken/2_alert/G10.png',
         '../img/4_enemie_boss_chicken/2_alert/G11.png',
         '../img/4_enemie_boss_chicken/2_alert/G12.png'
+    ];
+
+    hurtImages = [
+        '../img/4_enemie_boss_chicken/4_hurt/G21.png',
+        '../img/4_enemie_boss_chicken/4_hurt/G22.png',
+        '../img/4_enemie_boss_chicken/4_hurt/G23.png'
     ];
 
     deadImages = [
@@ -34,6 +48,8 @@ class Endboss extends MovableObject {
     constructor() {
         super().loadImage(this.walkingImages[0]);
         this.loadImages(this.walkingImages);
+        this.loadImages(this.alertImages);
+        this.loadImages(this.hurtImages);
         this.loadImages(this.deadImages);
         this.x = 2600;
         this.animate();
@@ -41,12 +57,17 @@ class Endboss extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if(this.health > 0) {
-                this.playAnimation(this.walkingImages);   
-            } else if(this.deadIndex == 0) {
+            if(this.health <= 0) {
                 this.playAnimation(this.deadImages);
                 this.deadIndex = 1;  
-            }   
+            } else if(this.hurtIndex == 1) {
+                this.playAnimation(this.hurtImages);
+                this.hurtIndex = 0;
+            } else if(this.characterPositionX > 2000) {
+                this.playAnimation(this.alertImages);      
+            } else {
+                this.playAnimation(this.walkingImages); 
+            }      
         }, 250);
     }
 

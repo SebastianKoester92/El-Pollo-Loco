@@ -28,11 +28,12 @@
 </head>
 <body>
     <h1 class="header">El Pollo Loco</h1>
+    <div id="fullscreen">
     <canvas id="canvas" width="720" height="480" class="d-none"></canvas>
     <div id="startScreen" class="startScreen">
         <button id="startGameButton" class="startScreenButton" onclick="init()">Start Game</button>
         <button id="controlsButton" class="startScreenButton" onclick="showControls()">Controls</button>
-        <button id="fullscreenOnButton" class="startScreenButton">Fullscreen On</button> 
+        <button id="fullscreenOnButton" class="startScreenButton" onclick="fullscreen()">Fullscreen On</button> 
     </div>
 
     <div id="controlsScreen" class="controlsScreen d-none">
@@ -73,7 +74,7 @@
     <div id="wonScreen" class="wonScreen d-none">
         <button id="restartGameButton" class="startScreenButton" onclick="showStartScreen()">Start Screen</button>
     </div>
-
+    </div>
 
 
 </body>

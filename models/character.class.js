@@ -66,13 +66,17 @@ class Character extends MovableObject {
             this.walking_sound.pause();
             if(this.world.keyboard.right && this.x < this.world.level.level_end_x) {
                 this.moveRight();
+                this.characterPositionX = this.x;
                 this.otherDirection = false;
                 this.walking_sound.play();
+                console.log(this.characterPositionX);
             }
             if(this.world.keyboard.left && this.x > 0) {
                 this.moveLeft();
+                this.characterPositionX = this.x;
                 this.otherDirection = true;
                 this.walking_sound.play();
+                console.log(this.characterPositionX);
             }
             if(this.world.keyboard.space && !this.isAboveGround()) {
                this.jump();
@@ -94,7 +98,6 @@ class Character extends MovableObject {
                     this.playAnimation(this.walkingImages);
                 }
             }
-        }, 120);
-        
+        }, 120); 
     }
 }

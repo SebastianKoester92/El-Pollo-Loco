@@ -80,6 +80,7 @@ class World {
                     this.enemyGotHitIndex = 1;
                     enemy.health -= 20;
                     if(enemy.enemyType == 2) {
+                        enemy.hurtIndex = 1;
                         this.statusBarHealthEndboss.percentage = enemy.health;
                         this.statusBarHealthEndboss.setPercentage(this.statusBarHealthEndboss.percentage);   
                     } 
