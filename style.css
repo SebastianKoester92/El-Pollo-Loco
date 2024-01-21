@@ -10,9 +10,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 90vh;
-    background-image: url('../img/10_gamebackground/desert.png');
+    height: 100vh;
+    background-image: url('../img/10_gamebackground/desert2.png');
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'zabars', Arial, Helvetica, sans-serif;
 }
 .header {
@@ -23,4 +25,76 @@ body {
 canvas {
     background-color: black;
     border-radius: 10px;
+}
+
+.startScreen {
+    display: flex;
+    justify-content: space-around;
+    background-image: url('../img/9_intro_outro_screens/start/startscreen_1.png');
+    background-position: center;
+    background-size: 720px 480px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    width: 720px;
+    height: 480px;
+}
+
+.startScreenButton {
+    font-family: 'zabars', Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    background-color: rgb(255, 162, 0);
+    height: 50px;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    margin-top: 20px;
+}
+
+.startScreenButton:hover {
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.controlsScreen {
+    background-image: url('../img/10_gamebackground/desert.png');
+    background-position: center;
+    background-size: cover;
+    width: 720px;
+    height: 480px;
+}
+
+.controlsHeader {
+    display: flex;
+    justify-content: center;
+    font-size: 70px;
+    margin-bottom: 40px;
+}
+
+.controlsImageContainer {
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    margin-left: 100px;
+    margin-right: 50px;
+}
+
+.controlsDescription {
+    display: flex;
+    align-items: center;
+    font-size: 35px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.arrowImage {
+    height: 50px;
+}
+
+.spaceImage {
+    height: 90px;
+}
+
+.d-none {
+    display: none;
 }

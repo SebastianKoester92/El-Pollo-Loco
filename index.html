@@ -26,13 +26,46 @@
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
 </head>
-<body onload="init()">
-
+<body>
     <h1 class="header">El Pollo Loco</h1>
+    <canvas id="canvas" width="720" height="480" class="d-none"></canvas>
+    <div id="startScreen" class="startScreen">
+        <button id="startGameButton" class="startScreenButton" onclick="init()">Start Game</button>
+        <button id="controlsButton" class="startScreenButton" onclick="showControls()">Controls</button>
+        <button id="fullscreenOnButton" class="startScreenButton">Fullscreen On</button> 
+    </div>
 
-    <canvas id="canvas" width="720" height="480">
+    <div id="controlsScreen" class="controlsScreen d-none">
+        <div style="margin-left: 20px;">
+            <button class="startScreenButton" onclick="showStartScreen()">Back</button>
+        </div>
 
-    </canvas>
-    
+        <div class="controlsHeader">
+            <span>Controls</span>
+        </div>
+
+        <div class="controlsDescription">
+            <div class="controlsImageContainer">
+                <img class="arrowImage" src="../img/11_controls/arrow_left_icon.png">
+                <img class="arrowImage" src="../img/11_controls/arrow_right_icon.png">
+            </div>
+            <span>Use LEFT AND RIGHT arrow keys to move left or right</span>
+        </div>
+        <div class="controlsDescription">
+            <div class="controlsImageContainer">
+              <img class="spaceImage" src="../img/11_controls/space_icon.png">  
+            </div>
+            <span>Press SPACE to jump</span>
+        </div>
+        <div class="controlsDescription">
+            <div class="controlsImageContainer">
+              <img class="arrowImage" src="../img/11_controls/d_icon.png">  
+            </div>
+            <span>Press D key to throw bottles at enemies</span>
+        </div>
+
+    </div>
+
+
 </body>
 </html>
