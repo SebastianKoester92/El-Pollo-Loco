@@ -11,6 +11,8 @@ class World {
     statusBarHealthEndboss = new StatusBarHealthEndboss();
     throwableObjects = [];
     enemyGotHitIndex = 0;
+    world_sound_theme = new Audio('../audio/gameTheme.wav');
+    world_sound_index = 1;
 
 
     constructor(canvas, keyboard) {
@@ -28,6 +30,9 @@ class World {
 
     run() {
         setInterval(() => {
+            if(this.world_sound_index == 1) {
+                this.world_sound_theme.play();
+            }
             this.checkThrowObjects();
             this.checkCollisions();
         }, 50);
@@ -59,6 +64,8 @@ class World {
             } else {
                 if(this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.health >= 1) {
                     this.character.jump();
+                    this.character.jumping_sound.play();
+                    enemy.dead_sound.play();
                     enemy.health -= 20;       
                     this.removeChickenFromMap(); 
                 }
@@ -80,6 +87,8 @@ class World {
                     bottle.bottleSplashIndex = 1;
                     bottle.bottleFlyIndex = 0;
                     bottle.hitIndex = 1;
+                    bottle.breaking_sound.play();
+                    enemy.dead_sound.play();
                     this.removeSplashedBottle(i);     
                 }
             });   
@@ -94,6 +103,7 @@ class World {
                 bottle.bottleSplashIndex = 1;
                 bottle.bottleFlyIndex = 0;
                 bottle.hitIndex = 1;
+                bottle.breaking_sound.play();
                 this.removeSplashedBottle(i);  
             }   
         });  
@@ -104,6 +114,7 @@ class World {
             if(this.character.isColliding(coin)) {
                 this.statusBarCoin.percentage += 20;
                 this.statusBarCoin.setPercentage(this.statusBarCoin.percentage);
+                coin.coinCollect_sound.play();
                 this.removeCoinFromMap(i);
             }
         }); 
@@ -114,6 +125,7 @@ class World {
             if(this.character.isColliding(salsa) && this.statusBarBottle.percentage < 100 ) {
                 this.statusBarBottle.percentage += 20;
                 this.statusBarBottle.setPercentage(this.statusBarBottle.percentage);
+                salsa.bottleCollect_sound.play();
                 this.removeSalsaFromMap(i);
             }
         }); 
@@ -128,7 +140,7 @@ class World {
     removeChickenFromMap() {
         setTimeout(() => {
             this.level.enemies.forEach( (enemy, i) => {
-                if(enemy.health <= 0) {
+                if(enemy.health <= 0 && enemy.enemyType == 1) {
                     this.level.enemies.splice(i, 1);  
                 } 
             });
@@ -203,4 +215,8 @@ class World {
         this.ctx.restore();
     }
 
+    clearCanvas() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
 }
+

@@ -15,6 +15,8 @@ class CollectableSalsa extends MovableObject {
         '../img/6_salsa_bottle/2_salsa_bottle_on_ground.png'
     ];
 
+    bottleCollect_sound = new Audio('../audio/bottle_collect.wav');
+
     constructor() {
         super().loadImage(this.walkingImages[0]);
         this.loadImages(this.walkingImages);
