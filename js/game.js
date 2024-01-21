@@ -10,20 +10,22 @@ function showControls() {
 function showStartScreen() {
     document.getElementById('controlsScreen').classList.add('d-none');
     document.getElementById('startScreen').classList.remove('d-none');
-    document.getElementById('endScreen').classList.add('d-none'); 
+    document.getElementById('lostScreen').classList.add('d-none');
+    document.getElementById('wonScreen').classList.add('d-none'); 
 }
 
-function showEndScreen() {
+function showEndScreen(value) {
     document.getElementById('canvas').classList.add('d-none');
-    document.getElementById('endScreen').classList.remove('d-none');
+    document.getElementById(`${value}Screen`).classList.remove('d-none');
 }
 
 
 function init() {
     document.getElementById('startScreen').classList.add('d-none');
-    document.getElementById('endScreen').classList.add('d-none');
+    document.getElementById('lostScreen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     canvas = document.getElementById('canvas');
+    canvas.value = '';
     world = new World(canvas, keyboard);
 }
 

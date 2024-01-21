@@ -74,24 +74,22 @@ class Character extends MovableObject {
                 this.otherDirection = true;
                 this.walking_sound.play();
             }
-
             if(this.world.keyboard.space && !this.isAboveGround()) {
                this.jump();
                this.jumping_sound.play(); 
             }
-
             this.world.camera_x = -this.x + 100;   
         }, 1500 / 60);
 
         setInterval(() => {
             if(this.isDead()) {
                 this.playAnimation(this.deadImages);
+                this.world.endGame('lost');
             } else if (this.isHurt()) {
                 this.playAnimation(this.hurtImages);
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.jumpingImages);
             } else {
-
                 if(this.world.keyboard.right || this.world.keyboard.left) {
                     this.playAnimation(this.walkingImages);
                 }

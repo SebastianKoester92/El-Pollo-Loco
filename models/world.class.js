@@ -142,6 +142,8 @@ class World {
             this.level.enemies.forEach( (enemy, i) => {
                 if(enemy.health <= 0 && enemy.enemyType == 1) {
                     this.level.enemies.splice(i, 1);  
+                } else if(enemy.health <= 0 && enemy.enemyType == 2) {
+                    this.endGame('won');
                 } 
             });
         }, 700);    
@@ -217,6 +219,17 @@ class World {
 
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    clearAllIntervals() {
+        for (let i = 1; i < 9999; i++) window.clearInterval(i);
+    }
+
+    endGame(value) {
+        this.world_sound_theme.pause();
+        this.clearAllIntervals();
+        this.clearCanvas();
+        showEndScreen(value);
     }
 }
 

@@ -16,7 +16,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'zabars', Arial, Helvetica, sans-serif;
+    margin: 0;
 }
+
 .header {
     font-size: 64px;
     letter-spacing: 3px;
@@ -24,7 +26,23 @@ body {
 
 canvas {
     background-color: black;
-    border-radius: 10px;
+    display: block;
+}
+
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    canvas  {
+        height: 100vh;
+    }
+
+    .header {
+        display: none;
+    }
 }
 
 .startScreen {
@@ -34,7 +52,6 @@ canvas {
     background-position: center;
     background-size: 720px 480px;
     background-repeat: no-repeat;
-    border-radius: 10px;
     width: 720px;
     height: 480px;
 }
@@ -60,7 +77,6 @@ canvas {
     background-image: url('../img/10_gamebackground/desert.png');
     background-position: center;
     background-size: cover;
-    border-radius: 10px;
     width: 720px;
     height: 480px;
 }
@@ -96,16 +112,26 @@ canvas {
     height: 90px;
 }
 
-.endScreen {
+.lostScreen {
     display: flex;
     justify-content: space-around;
     background-image: url('../img/9_intro_outro_screens/game_over/oh no you lost!.png');
     background-position: center;
     background-size: 720px 480px;
     background-repeat: no-repeat;
-    border-radius: 10px;
     width: 720px;
     height: 480px;  
+}
+
+.wonScreen {
+    display: flex;
+    justify-content: space-around;
+    background-image: url('../img/9_intro_outro_screens/game_over/game over.png');
+    background-position: center;
+    background-size: 720px 480px;
+    background-repeat: no-repeat;
+    width: 720px;
+    height: 480px;   
 }
 
 .d-none {
