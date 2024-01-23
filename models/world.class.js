@@ -144,7 +144,7 @@ class World {
                 if(enemy.health <= 0 && enemy.enemyType == 1) {
                     this.level.enemies.splice(i, 1);  
                 } else if(enemy.health <= 0 && enemy.enemyType == 2) {
-                    this.endGame('won');
+                    this.endGame('won');       
                 } 
             });
         }, 700);    

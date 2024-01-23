@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let positionOfChar = 0;
 
 function showControls() {
     document.getElementById('startScreen').classList.add('d-none');

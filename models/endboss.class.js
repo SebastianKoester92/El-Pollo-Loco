@@ -11,6 +11,7 @@ class Endboss extends MovableObject {
         right: 60,
         bottom: 150
     };
+    speed = 30;
     hurtIndex = 0;
     deadIndex = 0;
     dead_sound = new Audio('../audio/dead_chicken.wav');
@@ -39,6 +40,17 @@ class Endboss extends MovableObject {
         '../img/4_enemie_boss_chicken/4_hurt/G23.png'
     ];
 
+    attackImages = [
+        '../img/4_enemie_boss_chicken/3_attack/G13.png',
+        '../img/4_enemie_boss_chicken/3_attack/G14.png',
+        '../img/4_enemie_boss_chicken/3_attack/G15.png',
+        '../img/4_enemie_boss_chicken/3_attack/G16.png',
+        '../img/4_enemie_boss_chicken/3_attack/G17.png',
+        '../img/4_enemie_boss_chicken/3_attack/G18.png',
+        '../img/4_enemie_boss_chicken/3_attack/G19.png',
+        '../img/4_enemie_boss_chicken/3_attack/G20.png'
+    ];
+
     deadImages = [
         '../img/4_enemie_boss_chicken/5_dead/G24.png',
         '../img/4_enemie_boss_chicken/5_dead/G25.png',
@@ -51,6 +63,7 @@ class Endboss extends MovableObject {
         this.loadImages(this.alertImages);
         this.loadImages(this.hurtImages);
         this.loadImages(this.deadImages);
+        this.loadImages(this.attackImages);
         this.x = 2600;
         this.animate();
     }
@@ -63,7 +76,9 @@ class Endboss extends MovableObject {
             } else if(this.hurtIndex == 1) {
                 this.playAnimation(this.hurtImages);
                 this.hurtIndex = 0;
-            } else if(this.characterPositionX > 2000) {
+            } else if(this.health < 100) {
+                this.playAnimation(this.attackImages);      
+            }else if(positionOfChar > 2150) {
                 this.playAnimation(this.alertImages);      
             } else {
                 this.playAnimation(this.walkingImages); 
