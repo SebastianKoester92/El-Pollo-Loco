@@ -13,16 +13,16 @@ class Chicken extends MovableObject {
         bottom: 20
     };
 
-    dead_sound = new Audio('../audio/dead_chicken.wav');
+    dead_sound = new Audio('./audio/dead_chicken.wav');
 
     walkingImages =[
-        '../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
-        '../img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
-        '../img/3_enemies_chicken/chicken_normal/1_walk/3_w.png'
+        './img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
+        './img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',
+        './img/3_enemies_chicken/chicken_normal/1_walk/3_w.png'
     ];
 
     deadImages =[
-        '../img/3_enemies_chicken/chicken_normal/2_dead/dead.png'
+        './img/3_enemies_chicken/chicken_normal/2_dead/dead.png'
     ];
 
     constructor() {

@@ -11,11 +11,11 @@ class CollectableCoin extends MovableObject {
     };
 
     walkingImages =[
-        '../img/8_coin/coin_1.png',
-        '../img/8_coin/coin_2.png'
+        './img/8_coin/coin_1.png',
+        './img/8_coin/coin_2.png'
     ];
 
-    coinCollect_sound = new Audio('../audio/coin_collect.wav');
+    coinCollect_sound = new Audio('./audio/coin_collect.wav');
 
     constructor() {
         super().loadImage(this.walkingImages[0]);
