@@ -11,7 +11,7 @@ class World {
     statusBarHealthEndboss = new StatusBarHealthEndboss();
     throwableObjects = [];
     enemyGotHitIndex = 0;
-    world_sound_theme = new Audio('../audio/gameTheme.wav');
+    world_sound_theme = new Audio('./audio/gameTheme.wav');
     world_sound_index = 0;
 
 
