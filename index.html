@@ -26,18 +26,18 @@
     <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
 </head>
-<body>
+<body onload="showScreen('startScreen')">
     <h1 class="header">El Pollo Loco</h1>
     <div id="fullscreen" class="fullscreen">
         <canvas id="canvas" width="720" height="480" class="d-none"></canvas>
         <div id="startScreen" class="startScreen">
             <button id="startGameButton" class="startScreenButton" onclick="init()">Start Game</button>
-            <button id="controlsButton" class="startScreenButton" onclick="showControls()">Controls</button>
+            <button id="controlsButton" class="startScreenButton" onclick="showScreen('controlsScreen')">Controls</button>
             <button id="fullscreenOnButton" class="startScreenButton d-none" onclick="fullscreen()">Fullscreen On</button> 
         </div>
         <div id="controlsScreen" class="controlsScreen d-none">
             <div style="margin-left: 20px;">
-                <button class="startScreenButton" onclick="showStartScreen()">Back</button>
+                <button class="startScreenButton" onclick="showScreen('startScreen')">Back</button>
             </div>
 
             <div class="controlsHeader">
@@ -66,10 +66,10 @@
         </div>
         <div id="lostScreen" class="lostScreen d-none">
             <button id="restartGameButton" class="startScreenButton" onclick="init()">Restart Game</button>
-            <button id="returnStartButton" class="startScreenButton" onclick="showStartScreen()">Start Screen</button>
+            <button id="returnStartButton" class="startScreenButton" onclick="showScreen('startScreen')">Start Screen</button>
         </div>
         <div id="wonScreen" class="wonScreen d-none">
-            <button id="restartGameButton" class="startScreenButton" onclick="showStartScreen()">Start Screen</button>
+            <button id="restartGameButton" class="startScreenButton" onclick="showScreen('startScreen')">Start Screen</button>
         </div>
     </div>
 

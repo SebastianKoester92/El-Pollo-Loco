@@ -150,7 +150,7 @@ class World {
                 if(enemy.health <= 0 && enemy.enemyType == 1) {
                     this.level.enemies.splice(i, 1);  
                 } else if(enemy.health <= 0 && enemy.enemyType == 2) {
-                    this.endGame('won');       
+                    this.endGame('wonScreen');       
                 } 
             });
         }, 700);    
@@ -236,7 +236,7 @@ class World {
         this.world_sound_theme.pause();
         this.clearAllIntervals();
         this.clearCanvas();
-        showEndScreen(value);
+        showScreen(value);
     }
 }
 
