@@ -100,8 +100,6 @@ class World {
         });
     }
 
-
-
     bottleCollisionWithGround() {
         this.throwableObjects.forEach( (bottle, i) => {
             if(bottle.y > 310) {
@@ -121,7 +119,9 @@ class World {
             if(this.character.isColliding(coin)) {
                 this.statusBarCoin.percentage += 20;
                 this.statusBarCoin.setPercentage(this.statusBarCoin.percentage);
-                coin.coinCollect_sound.play();
+                if(this.world_sound_index == 1) {
+                    coin.coinCollect_sound.play();
+                }
                 this.removeCoinFromMap(i);
             }
         }); 
