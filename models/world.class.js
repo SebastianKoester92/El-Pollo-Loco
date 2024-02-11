@@ -12,7 +12,7 @@ class World {
     throwableObjects = [];
     enemyGotHitIndex = 0;
     world_sound_theme = new Audio('../audio/gameTheme.wav');
-    world_sound_index = 1;
+    world_sound_index = 0;
 
 
     constructor(canvas, keyboard) {
@@ -64,8 +64,10 @@ class World {
             } else {
                 if(this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.health >= 1) {
                     this.character.jump();
-                    this.character.jumping_sound.play();
-                    enemy.dead_sound.play();
+                    if(this.world_sound_index == 1) {
+                        this.character.jumping_sound.play();
+                        enemy.dead_sound.play();
+                    }
                     enemy.health -= 20;       
                     this.removeChickenFromMap(); 
                 }
@@ -88,8 +90,10 @@ class World {
                     bottle.bottleSplashIndex = 1;
                     bottle.bottleFlyIndex = 0;
                     bottle.hitIndex = 1;
-                    bottle.breaking_sound.play();
-                    enemy.dead_sound.play();
+                    if(this.world_sound_index == 1) {
+                        bottle.breaking_sound.play();
+                        enemy.dead_sound.play();
+                    }
                     this.removeSplashedBottle(i);     
                 }
             });   
@@ -104,7 +108,9 @@ class World {
                 bottle.bottleSplashIndex = 1;
                 bottle.bottleFlyIndex = 0;
                 bottle.hitIndex = 1;
-                bottle.breaking_sound.play();
+                if(this.world_sound_index == 1) {
+                    bottle.breaking_sound.play();
+                }
                 this.removeSplashedBottle(i);  
             }   
         });  
