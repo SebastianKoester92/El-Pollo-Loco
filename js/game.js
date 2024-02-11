@@ -2,6 +2,7 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let positionOfChar = 0;
+let throwDirection = 0;
 
 function showScreen(screenToShow) {
     document.getElementById('canvas').classList.add('d-none');
@@ -15,6 +16,7 @@ function showScreen(screenToShow) {
 
 function init() {
     showScreen('canvas');
+    initLevel();
     canvas = document.getElementById('canvas');
     canvas.value = '';
     world = new World(canvas, keyboard);

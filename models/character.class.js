@@ -71,6 +71,7 @@ class Character extends MovableObject {
                     this.walking_sound.play();
                 }
                 positionOfChar = this.x;
+                throwDirection = 0;
             }
             if(this.world.keyboard.left && this.x > 0) {
                 this.moveLeft();
@@ -79,6 +80,7 @@ class Character extends MovableObject {
                     this.walking_sound.play();
                 }
                 positionOfChar = this.x;
+                throwDirection = 1;
             }
             if(this.world.keyboard.space && !this.isAboveGround()) {
                this.jump();

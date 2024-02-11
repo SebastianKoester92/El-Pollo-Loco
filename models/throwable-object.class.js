@@ -43,11 +43,19 @@ class ThrowableObject extends MovableObject {
     throw() {
         this.speedY = 30;
         this.applyGravity();
-        setInterval(() => {
-            if(this.bottleFlyIndex == 1){
-                this.x += 10;  
-            }           
-        }, 25);
+        if(throwDirection == 0) {
+            setInterval(() => {
+                if(this.bottleFlyIndex == 1){
+                    this.x += 10;  
+                }           
+            }, 25);
+        } else {
+            setInterval(() => {
+                if(this.bottleFlyIndex == 1){
+                    this.x -= 10;  
+                }           
+            }, 25);  
+        }
     }
 
     animate() {

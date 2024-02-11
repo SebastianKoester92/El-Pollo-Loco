@@ -39,8 +39,14 @@ class World {
     }
 
     checkThrowObjects() {
-        if(this.keyboard.d && this.statusBarBottle.percentage > 0 && this.throwableObjects.length == 0) {
+        if(this.keyboard.d && this.statusBarBottle.percentage > 0 && this.throwableObjects.length == 0 && throwDirection == 0) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 120);
+            this.throwableObjects.push(bottle);
+            this.statusBarBottle.percentage -= 20;
+            this.enemyGotHitIndex = 0;
+            this.statusBarBottle.setPercentage(this.statusBarBottle.percentage);
+        } else if(this.keyboard.d && this.statusBarBottle.percentage > 0 && this.throwableObjects.length == 0 && throwDirection == 1) {
+            let bottle = new ThrowableObject(this.character.x - 20, this.character.y + 120);
             this.throwableObjects.push(bottle);
             this.statusBarBottle.percentage -= 20;
             this.enemyGotHitIndex = 0;
@@ -132,7 +138,9 @@ class World {
             if(this.character.isColliding(salsa) && this.statusBarBottle.percentage < 100 ) {
                 this.statusBarBottle.percentage += 20;
                 this.statusBarBottle.setPercentage(this.statusBarBottle.percentage);
+                if(this.world_sound_index == 1) {
                 salsa.bottleCollect_sound.play();
+                }
                 this.removeSalsaFromMap(i);
             }
         }); 
