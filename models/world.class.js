@@ -12,8 +12,6 @@ class World {
     throwableObjects = [];
     enemyGotHitIndex = 0;
     world_sound_theme = new Audio('./audio/gameTheme.wav');
-    world_sound_index = 0;
-
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -30,12 +28,15 @@ class World {
 
     run() {
         setInterval(() => {
-            if(this.world_sound_index == 1) {
+            if(world_sound_index == 1) {
                 this.world_sound_theme.play();
             }
             this.checkThrowObjects();
             this.checkCollisions();
         }, 50);
+        setInterval(() => {
+            this.characterGotHit();
+        }, 500); 
     }
 
     checkThrowObjects() {
@@ -64,21 +65,25 @@ class World {
 
     characterCollisionWithEnemy() {
         this.level.enemies.forEach( (enemy, i) => {
+            if(this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0 && enemy.health >= 1) {
+                this.character.jump();
+                if(world_sound_index == 1) {
+                    this.character.jumping_sound.play();
+                    enemy.dead_sound.play();
+                }
+                enemy.health -= 20;       
+                this.removeChickenFromMap(); 
+            }  
+        }); 
+    }
+
+    characterGotHit() {
+        this.level.enemies.forEach( (enemy, i) => {
             if(this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.health >= 1) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
-            } else {
-                if(this.character.isColliding(enemy) && this.character.isAboveGround() && enemy.health >= 1) {
-                    this.character.jump();
-                    if(this.world_sound_index == 1) {
-                        this.character.jumping_sound.play();
-                        enemy.dead_sound.play();
-                    }
-                    enemy.health -= 20;       
-                    this.removeChickenFromMap(); 
-                }
             }
-        }); 
+        });  
     }
 
     bottleCollisionWithEnemy() {
@@ -96,7 +101,7 @@ class World {
                     bottle.bottleSplashIndex = 1;
                     bottle.bottleFlyIndex = 0;
                     bottle.hitIndex = 1;
-                    if(this.world_sound_index == 1) {
+                    if(world_sound_index == 1) {
                         bottle.breaking_sound.play();
                         enemy.dead_sound.play();
                     }
@@ -112,7 +117,7 @@ class World {
                 bottle.bottleSplashIndex = 1;
                 bottle.bottleFlyIndex = 0;
                 bottle.hitIndex = 1;
-                if(this.world_sound_index == 1) {
+                if(world_sound_index == 1) {
                     bottle.breaking_sound.play();
                 }
                 this.removeSplashedBottle(i);  
@@ -125,7 +130,7 @@ class World {
             if(this.character.isColliding(coin)) {
                 this.statusBarCoin.percentage += 20;
                 this.statusBarCoin.setPercentage(this.statusBarCoin.percentage);
-                if(this.world_sound_index == 1) {
+                if(world_sound_index == 1) {
                     coin.coinCollect_sound.play();
                 }
                 this.removeCoinFromMap(i);
@@ -138,7 +143,7 @@ class World {
             if(this.character.isColliding(salsa) && this.statusBarBottle.percentage < 100 ) {
                 this.statusBarBottle.percentage += 20;
                 this.statusBarBottle.setPercentage(this.statusBarBottle.percentage);
-                if(this.world_sound_index == 1) {
+                if(world_sound_index == 1) {
                 salsa.bottleCollect_sound.play();
                 }
                 this.removeSalsaFromMap(i);
@@ -244,6 +249,7 @@ class World {
         this.world_sound_theme.pause();
         this.clearAllIntervals();
         this.clearCanvas();
+        hideMobileButtons();
         showScreen(value);
     }
 }

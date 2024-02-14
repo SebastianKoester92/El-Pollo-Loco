@@ -19,11 +19,11 @@
     <script src="models/character.class.js"></script>
     <script src="models/world.class.js"></script>
     <script src="models/background-object.class.js"></script>
-    <script src="models/keyboard.class.js"></script>
     <script src="models/level.class.js"></script>
     <script src="models/throwable-object.class.js"></script>
     <script src="models/endboss.class.js"></script>
     <script src="levels/level1.js"></script>
+    <script src="models/keyboard.class.js"></script>
     <script src="js/game.js"></script>
 </head>
 <body onload="showScreen('startScreen')">
@@ -72,7 +72,23 @@
             <button id="restartGameButton" class="startScreenButton" onclick="showScreen('startScreen')">Start Screen</button>
         </div>
     </div>
-
-
+    <div id="mobileButtons" class="mobileButtons d-none">
+        <div class="aktionButtons">
+            <div id="btnLeft" class="arrowDiv">
+                <img class="leftRightArrow" src="./img/12_mobile_button/left.png">  
+            </div>
+            <div id="btnRight" class="arrowDiv">
+                <img class="leftRightArrow" src="./img/12_mobile_button/right.png">  
+            </div>
+        </div>
+        <div class="aktionButtons">
+            <div id="btnUp" class="arrowDiv">
+                <img class="leftRightArrow" src="img/12_mobile_button/up.png">  
+            </div>
+            <div id="btnThrow" class="arrowDiv">
+                <img class="leftRightArrow" src="img/12_mobile_button/throw.png">  
+            </div>
+        </div>       
+    </div>
 </body>
 </html>
