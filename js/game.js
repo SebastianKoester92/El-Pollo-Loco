@@ -23,7 +23,7 @@ function hideMobileButtons() {
 }
 
 function init() {
-    checkDevice();
+    checkMobileDevice();
     showScreen('canvas');
     initLevel();
     canvas = document.getElementById('canvas');
@@ -31,12 +31,22 @@ function init() {
     world = new World(canvas, keyboard);
 }
 
-function checkDevice() {
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.matchMedia("(orientation: landscape)").matches){
+function checkMobileDevice() {
+    if (isMobileDevice()) {
         showMobileButtons();
-      }else{
-        hideMobileButtons();
-      }
+    }
+}
+
+function isMobileDevice() {
+    return window.innerWidth <= 800 && window.innerHeight <= 600;
+}
+
+function muteMusic() {
+    if(world_sound_index == 1) {
+        world_sound_index = 0;
+    }else{
+        world_sound_index = 1;  
+    }
 }
 
 window.addEventListener("keydown", (e) => {

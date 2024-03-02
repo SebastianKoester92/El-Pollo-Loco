@@ -30,6 +30,8 @@ class World {
         setInterval(() => {
             if(world_sound_index == 1) {
                 this.world_sound_theme.play();
+            }else{
+                this.world_sound_theme.pause();
             }
             this.checkThrowObjects();
             this.checkCollisions();
