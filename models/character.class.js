@@ -60,8 +60,8 @@ class Character extends MovableObject {
         this.animate();
     }
 
+    /* animates the character while moving left, right and jumping */
     animate() {
-
         setInterval(() => {
             this.walking_sound.pause();
             if(this.world.keyboard.right && this.x < this.world.level.level_end_x) {
@@ -91,6 +91,7 @@ class Character extends MovableObject {
             this.world.camera_x = -this.x + 100;   
         }, 1500 / 60);
 
+        /* checks if the character is dead, hurt, above ground or moving and plays the specific animation */
         setInterval(() => {
             if(this.isDead()) {
                 this.playAnimation(this.deadImages);
