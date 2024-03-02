@@ -77,13 +77,14 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.hurtImages);
                 this.hurtIndex = 0;
             } else if(this.health < 100) {
-                this.playAnimation(this.attackImages);      
+                this.playAnimation(this.attackImages);
+                this.x -= 35;      
             }else if(positionOfChar > 2150) {
                 this.playAnimation(this.alertImages);      
             } else {
                 this.playAnimation(this.walkingImages); 
             }      
-        }, 250);
+        }, 200);
     }
 
 }

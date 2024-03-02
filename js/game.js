@@ -23,7 +23,7 @@ function hideMobileButtons() {
 }
 
 function init() {
-    showMobileButtons();
+    checkDevice();
     showScreen('canvas');
     initLevel();
     canvas = document.getElementById('canvas');
@@ -31,29 +31,13 @@ function init() {
     world = new World(canvas, keyboard);
 }
 
-function fullscreen() {
-    let fullscreen = document.getElementById('fullscreen');
-    enterFullscreen(fullscreen);
+function checkDevice() {
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.matchMedia("(orientation: landscape)").matches){
+        showMobileButtons();
+      }else{
+        hideMobileButtons();
+      }
 }
-
-function enterFullscreen(element) {
-    if(element.requestFullscreen) {
-      element.requestFullscreen();
-    } else if(element.msRequestFullscreen) {      
-      element.msRequestFullscreen();
-    } else if(element.webkitRequestFullscreen) {  
-      element.webkitRequestFullscreen();
-    }
-  }
-
-  function exitFullscreen() {
-    if(document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if(document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    }
-  }
-
 
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == 39) {
