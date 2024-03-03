@@ -38,7 +38,13 @@ class World {
         }, 50);
         setInterval(() => {
             this.characterGotHit();
-        }, 500); 
+        }, 500);
+        
+        setInterval(() => {
+            if(this.enemyGotHitIndex == 1) {
+                this.statusBarHealthEndboss.x -= 25;
+            }
+        }, 200);   
     }
 
     /* checks if a bottle is thrown, by the direction the character is facing */

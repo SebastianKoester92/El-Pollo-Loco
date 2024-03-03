@@ -78,7 +78,7 @@ class Endboss extends MovableObject {
                 this.hurtIndex = 0;
             } else if(this.health < 100) {
                 this.playAnimation(this.attackImages);
-                this.x -= 35;      
+                this.x -= 25;      
             }else if(positionOfChar > 2150) {
                 this.playAnimation(this.alertImages);      
             } else {

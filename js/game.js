@@ -60,7 +60,6 @@ function changeMuteButton(div) {
     document.getElementById(div).classList.remove('d-none');
 }
 
-
 /* checks if a button is pressed */
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == 39) {
