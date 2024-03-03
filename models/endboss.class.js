@@ -14,7 +14,7 @@ class Endboss extends MovableObject {
     speed = 30;
     hurtIndex = 0;
     deadIndex = 0;
-    dead_sound = new Audio('../audio/dead_chicken.wav');
+    dead_sound = new Audio('./audio/dead_chicken.wav');
 
     walkingImages = [
         './img/4_enemie_boss_chicken/1_walk/G1.png',
@@ -71,18 +71,20 @@ class Endboss extends MovableObject {
     animate() {
         setInterval(() => {
             if(this.health <= 0) {
-                this.playAnimation(this.deadImages);
+                this.playAnimation(this.deadImages); /* dead animation */
+                endbossGotHitIndex = 0;
                 this.deadIndex = 1;  
             } else if(this.hurtIndex == 1) {
-                this.playAnimation(this.hurtImages);
+                this.playAnimation(this.hurtImages); /* hurt animation */
                 this.hurtIndex = 0;
+                this.x -= 25;
             } else if(this.health < 100) {
-                this.playAnimation(this.attackImages);
+                this.playAnimation(this.attackImages); /* attack animation */
                 this.x -= 25;      
             }else if(positionOfChar > 2150) {
-                this.playAnimation(this.alertImages);      
+                this.playAnimation(this.alertImages); /* alert animation */     
             } else {
-                this.playAnimation(this.walkingImages); 
+                this.playAnimation(this.walkingImages); /* walk animation */
             }      
         }, 200);
     }

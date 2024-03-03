@@ -41,7 +41,7 @@ class World {
         }, 500);
         
         setInterval(() => {
-            if(this.enemyGotHitIndex == 1) {
+            if(endbossGotHitIndex == 1) {
                 this.statusBarHealthEndboss.x -= 25;
             }
         }, 200);   
@@ -107,6 +107,7 @@ class World {
                     enemy.health -= 20;
                     if(enemy.enemyType == 2) {
                         enemy.hurtIndex = 1;
+                        endbossGotHitIndex = 1;
                         this.statusBarHealthEndboss.percentage = enemy.health;
                         this.statusBarHealthEndboss.setPercentage(this.statusBarHealthEndboss.percentage);   
                     } 

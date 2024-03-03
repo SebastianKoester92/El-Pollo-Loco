@@ -23,7 +23,7 @@ class ThrowableObject extends MovableObject {
         './img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png'
     ]
 
-    breaking_sound = new Audio('../audio/bottle-break.wav');
+    breaking_sound = new Audio('./audio/bottle-break.wav');
     bottleSplashIndex = 0;
     bottleFlyIndex = 1;
     hitIndex = 0;
