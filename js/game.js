@@ -3,7 +3,7 @@ let world;
 let keyboard = new Keyboard();
 let positionOfChar = 0;
 let throwDirection = 0;
-let world_sound_index = 1;
+let world_sound_index = 0;
 
 /* Shows the specific screen that is needed */
 function showScreen(screenToShow) {
@@ -12,7 +12,6 @@ function showScreen(screenToShow) {
     document.getElementById('controlsScreen').classList.add('d-none');
     document.getElementById('lostScreen').classList.add('d-none');
     document.getElementById('wonScreen').classList.add('d-none');
-    
     document.getElementById(screenToShow).classList.remove('d-none');  
 }
 
@@ -36,25 +35,29 @@ function init() {
     world = new World(canvas, keyboard);
 }
 
-/* checks if the game is played on a mobile device */
+/* checks if the device uses a touchscreen. If yes, the mobile buttons
+will be active at the start of the game */
 function checkMobileDevice() {
-    if (isMobileDevice()) {
+    if('ontouchstart' in window || navigator.maxTouchPoints) {
         showMobileButtons();
     }
 }
 
-/* returns true if the device isn't bigger than 800 width and 600 height */
-function isMobileDevice() {
-    return window.innerWidth <= 800 && window.innerHeight <= 600;
+/* mutes the music ingame. The music is turned off by default */
+function muteMusic(div) {
+    if(world_sound_index == 0) {
+        world_sound_index = 1;
+    }else{
+        world_sound_index = 0;  
+    }
+    changeMuteButton(div);
 }
 
-/* mutes the music ingame */
-function muteMusic() {
-    if(world_sound_index == 1) {
-        world_sound_index = 0;
-    }else{
-        world_sound_index = 1;  
-    }
+/* changes the mute / unmute icon as the music is turned on or off */
+function changeMuteButton(div) {
+    document.getElementById('muteButtonDiv').classList.add('d-none');
+    document.getElementById('unmuteButtonDiv').classList.add('d-none');  
+    document.getElementById(div).classList.remove('d-none');
 }
 
 
