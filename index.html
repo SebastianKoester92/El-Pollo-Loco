@@ -30,18 +30,17 @@
     <div id="turnDeviceNotice" class="turnDeviceNotice">
         <span>Please turn your Device</span>   
     </div>
-    
-    <div id="muteButtonDiv" class="muteButtonDiv d-none" onclick="muteMusic('unmuteButtonDiv')">
-        <img class="muteButtonImage" src="./img/12_mobile_button/mute.png">  
-    </div>
-    <div id="unmuteButtonDiv" class="muteButtonDiv" onclick="muteMusic('muteButtonDiv')">
-        <img class="muteButtonImage" src="./img/12_mobile_button/unmute.png">  
-    </div>
     <h1 class="header">El Pollo Loco</h1>
     <div id="fullscreen" class="fullscreen">
         <canvas id="canvas" width="720" height="480" class="d-none"></canvas>
         <div id="startScreen" class="startScreen">
             <button id="startGameButton" class="startScreenButton" onclick="init()">Start Game</button>
+            <div id="muteButtonDiv" class="muteButtonDiv d-none" onclick="muteMusic('unmuteButtonDiv')">
+                <img class="muteButtonImage" src="./img/12_mobile_button/mute.png">  
+            </div>
+            <div id="unmuteButtonDiv" class="muteButtonDiv" onclick="muteMusic('muteButtonDiv')">
+                <img class="muteButtonImage" src="./img/12_mobile_button/unmute.png">  
+            </div>
             <button id="controlsButton" class="startScreenButton" onclick="showScreen('controlsScreen')">Controls</button>
             <button id="fullscreenOnButton" class="startScreenButton d-none" onclick="fullscreen()">Fullscreen On</button> 
         </div>
@@ -91,6 +90,12 @@
                 <img class="leftRightArrow" src="./img/12_mobile_button/right.png">  
             </div>
         </div>
+        <div id="muteButtonDiv2" class="muteButtonDiv2 d-none" onclick="muteMusic('unmuteButtonDiv2')">
+            <img class="muteButtonImage" src="./img/12_mobile_button/mute.png">  
+        </div>
+        <div id="unmuteButtonDiv2" class="muteButtonDiv2" onclick="muteMusic('muteButtonDiv2')">
+            <img class="muteButtonImage" src="./img/12_mobile_button/unmute.png">  
+        </div>
         <div class="aktionButtons">
             <div id="btnUp" class="arrowDiv">
                 <img class="leftRightArrow" src="img/12_mobile_button/up.png">  
@@ -100,5 +105,29 @@
             </div>
         </div>       
     </div>
+
+
+
+    <div id="muteOverlay" class="muteOverlay d-none">
+        <div id="muteUnmuteDiv" class="muteUnmuteDiv">
+            <div id="muteButtonDiv3" class="muteButtonDiv3 d-none" onclick="muteMusic('unmuteButtonDiv3')">
+                <img class="muteButtonImage" src="./img/12_mobile_button/mute.png">  
+            </div>
+            <div id="unmuteButtonDiv3" class="muteButtonDiv3" onclick="muteMusic('muteButtonDiv3')">
+                <img class="muteButtonImage" src="./img/12_mobile_button/unmute.png">  
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

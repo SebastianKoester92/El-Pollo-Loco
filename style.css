@@ -156,20 +156,48 @@ canvas {
     height: 480px;   
 }
 
-.muteButtonDiv {
+.muteButtonDiv, .muteButtonDiv3  {
     display: flex;
     background-color: orange;
-    position: fixed;
     justify-content: center;
     align-items: center;
-    z-index: 9000;
     border-radius: 50px;
     width: 35px;
     height: 35px;
-    top: 71%;     
+    margin-top: 25px;     
+ }
+
+.muteButtonDiv2 {
+    display: flex;
+    background-color: orange;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 10px;     
 }
 
-.muteButtonDiv:hover {
+.muteOverlay {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    z-index: 800;
+    width: 100vw;
+    height: 100vh;
+}
+
+.muteUnmuteDiv {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    width: 720px;
+    height: 480px;
+    margin-top: 149px;
+}
+
+.muteButtonDiv, .muteButtonDiv2, .muteButtonDiv3:hover {
     cursor: pointer;
     scale: 1.05;
 }

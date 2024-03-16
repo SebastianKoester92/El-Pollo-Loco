@@ -35,7 +35,7 @@ class World {
             }
             this.checkThrowObjects();
             this.checkCollisions();
-        }, 50);
+        }, 20);
         setInterval(() => {
             this.characterGotHit();
         }, 500);
@@ -240,7 +240,7 @@ class World {
         }
 
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
+        //mo.drawFrame(this.ctx);
 
         if(mo.otherDirection){
             this.flipImageBack(mo);
@@ -275,6 +275,7 @@ class World {
         this.clearAllIntervals();
         this.clearCanvas();
         hideMobileButtons();
+        hideMuteOverlay();
         showScreen(value);
     }
 }

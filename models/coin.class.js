@@ -6,8 +6,8 @@ class CollectableCoin extends MovableObject {
     offset = {
         top: 50,
         left: 50,
-        right: 100,
-        bottom: 100
+        right: 50,
+        bottom: 50
     };
 
     walkingImages =[

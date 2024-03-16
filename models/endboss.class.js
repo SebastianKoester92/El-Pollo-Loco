@@ -6,10 +6,10 @@ class Endboss extends MovableObject {
     health = 100;
     enemyType = 2;
     offset = {
-        top: 100,
-        left: 35,
+        top: 120,
+        left: 45,
         right: 60,
-        bottom: 150
+        bottom: 70
     };
     speed = 30;
     hurtIndex = 0;

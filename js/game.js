@@ -26,6 +26,16 @@ function hideMobileButtons() {
     document.getElementById('mobileButtons').classList.add('d-none');
 }
 
+/* turn on mute / unmute button while game is active*/
+function showMuteOverlay() {
+    document.getElementById('muteOverlay').classList.remove('d-none'); 
+}
+
+/* turn off mute / unmute button while game is inactive or mobile buttons are active*/
+function hideMuteOverlay() {
+    document.getElementById('muteOverlay').classList.add('d-none'); 
+}
+
 /* starts and creates the game */
 function init() {
     checkMobileDevice();
@@ -41,6 +51,8 @@ will be active at the start of the game */
 function checkMobileDevice() {
     if('ontouchstart' in window || navigator.maxTouchPoints) {
         showMobileButtons();
+    } else {
+        showMuteOverlay();
     }
 }
 
@@ -57,7 +69,11 @@ function muteMusic(div) {
 /* changes the mute / unmute icon as the music is turned on or off */
 function changeMuteButton(div) {
     document.getElementById('muteButtonDiv').classList.add('d-none');
-    document.getElementById('unmuteButtonDiv').classList.add('d-none');  
+    document.getElementById('unmuteButtonDiv').classList.add('d-none');
+    document.getElementById('muteButtonDiv2').classList.add('d-none');
+    document.getElementById('unmuteButtonDiv2').classList.add('d-none');
+    document.getElementById('muteButtonDiv3').classList.add('d-none');
+    document.getElementById('unmuteButtonDiv3').classList.add('d-none');  
     document.getElementById(div).classList.remove('d-none');
 }
 

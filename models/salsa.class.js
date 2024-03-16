@@ -5,9 +5,9 @@ class CollectableSalsa extends MovableObject {
     height = 70;
     offset = {
         top: 15,
-        left: 28,
-        right: 43,
-        bottom: 23
+        left: 27,
+        right: 22,
+        bottom: 12
     };
 
     walkingImages =[

@@ -6,9 +6,9 @@ class Character extends MovableObject {
     speed = 10;
     offset = {
         top: 130,
-        left: 40,
-        right: 80,
-        bottom: 150
+        left: 30,
+        right: 30,
+        bottom: 20
     };
     
     walkingImages = [

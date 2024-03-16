@@ -27,6 +27,10 @@ function initLevel() {
         new CollectableSalsa(),
         new CollectableSalsa(),
         new CollectableSalsa(),
+        new CollectableSalsa(),
+        new CollectableSalsa(),
+        new CollectableSalsa(),
+        new CollectableSalsa(),
         new CollectableSalsa()
     ],
     [
