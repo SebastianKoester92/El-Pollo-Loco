@@ -17,7 +17,7 @@ draw(ctx) {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
 }
 
-/* draws a box around all movable objects to show the hitbox */
+/** draws a box around all movable objects to show the hitbox */
 drawFrame(ctx) {
     if(this instanceof Character || this instanceof Chicken || this instanceof Endboss || this instanceof CollectableCoin || this instanceof CollectableSalsa || this instanceof ThrowableObject) {
         ctx.beginPath();

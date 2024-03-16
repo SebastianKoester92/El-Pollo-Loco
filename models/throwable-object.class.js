@@ -40,6 +40,7 @@ class ThrowableObject extends MovableObject {
         this.animate();
     }
 
+    /** thows the bottle depending on the directin the character is facing */
     throw() {
         this.speedY = 30;
         this.applyGravity();
@@ -58,6 +59,7 @@ class ThrowableObject extends MovableObject {
         }
     }
 
+    /** animates the bottle that is thrown */
     animate() {
         setInterval(() => {
             if(this.bottleSplashIndex == 0){

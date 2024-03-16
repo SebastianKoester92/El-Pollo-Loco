@@ -21,14 +21,14 @@ class StatusBarHealthEndboss extends DrawableObject {
         this.setPercentage(100);
     }
 
+    /** selects the image depending on the percentage */
     setPercentage(percentage) {
         this.percentage = percentage;
         let path = this.imagesHealth[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
-
-
+    /** returns the image number depending on the percentage */
     resolveImageIndex() {
         if(this.percentage == 100) {
             return 5;

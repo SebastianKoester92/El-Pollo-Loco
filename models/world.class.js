@@ -43,7 +43,7 @@ class World {
         }, 200);   
     }
 
-    /* checks if a bottle is thrown, by the direction the character is facing */
+    /** checks if a bottle is thrown, by the direction the character is facing */
     checkThrowObjects() {
         if(this.keyboard.d && this.statusBarBottle.percentage > 0 && this.throwableObjects.length == 0 && throwDirection == 0) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 120);
@@ -60,7 +60,7 @@ class World {
         }
     }
 
-    /* checks all possible collisions */
+    /** checks all possible collisions */
     checkCollisions() {
         this.characterCollisionWithEnemy();
         this.bottleCollisionWithGround();
@@ -70,7 +70,7 @@ class World {
         this.characterGotHit();
     }
 
-    /* checks the character collision with an enemy */
+    /** checks the character collision with an enemy */
     characterCollisionWithEnemy() {
         this.level.enemies.forEach( (enemy, i) => {
             if(this.character.isColliding(enemy) && this.character.isAboveGround() && this.character.speedY < 0 && enemy.health >= 1) {
@@ -85,7 +85,7 @@ class World {
         }); 
     }
 
-    /* checks if the character got hit by an enemy */
+    /**checks if the character got hit by an enemy */
     characterGotHit() {
         this.level.enemies.forEach( (enemy, i) => {
             if(this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.health >= 1  && !this.character.isHurt()) {
@@ -95,7 +95,7 @@ class World {
         });  
     }
 
-    /* checks if an enemy got hit by a bottle */
+    /**checks if an enemy got hit by a bottle */
     bottleCollisionWithEnemy() {
         this.throwableObjects.forEach( (bottle, i) => {
             this.level.enemies.forEach( (enemy, y) => {
@@ -122,7 +122,7 @@ class World {
         });
     }
 
-    /* checks if the bottle hit the ground. If yes, it splashes */
+    /** checks if the bottle hit the ground. If yes, it splashes */
     bottleCollisionWithGround() {
         this.throwableObjects.forEach( (bottle, i) => {
             if(bottle.y > 310) {
@@ -137,7 +137,7 @@ class World {
         });  
     }
 
-    /* checks the character collision with a coin. If yes the coin is collected */
+    /** checks the character collision with a coin. If yes the coin is collected */
     collisionWithCoin() {
         this.level.collectableCoins.forEach( (coin, i) => {
             if(this.character.isColliding(coin)) {
@@ -151,7 +151,7 @@ class World {
         }); 
     }
 
-    /* checks the character collision with a bottle. If yes the bottle is collected */
+    /** checks the character collision with a bottle. If yes the bottle is collected */
     collisionWithSalsa() {
         this.level.collectableSalsa.forEach( (salsa, i) => {
             if(this.character.isColliding(salsa) && this.statusBarBottle.percentage < 100 ) {
@@ -165,14 +165,14 @@ class World {
         }); 
     }
 
-    /* removes the thrown bottle that hit the ground or an enemy */
+    /** removes the thrown bottle that hit the ground or an enemy */
     removeSplashedBottle(i){
         setTimeout(() => {
             this.throwableObjects.splice(i, 1);
         }, 300) ;
     }
 
-    /* removes the chicken that got killed by the character or the bottle */
+    /** removes the chicken that got killed by the character or the bottle */
     removeChickenFromMap() {
         setTimeout(() => {
             this.level.enemies.forEach( (enemy, i) => {
@@ -185,17 +185,17 @@ class World {
         }, 700);    
     }
 
-    /* removes the collected coin */
+    /** removes the collected coin */
     removeCoinFromMap(i) {
         this.level.collectableCoins.splice(i, 1); 
     }
 
-    /* removes the collected bottle */
+    /** removes the collected bottle */
     removeSalsaFromMap(i) {
         this.level.collectableSalsa.splice(i, 1); 
     }
 
-    /* draws everything to the canvas */
+    /** draws everything to the canvas */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -244,7 +244,7 @@ class World {
         }
     }
 
-    /* flips the image of the character */
+    /** flips the image of the character */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
@@ -252,23 +252,23 @@ class World {
         mo.x = mo.x * -1;
     }
 
-    /* flips the image of the character back*/
+    /** flips the image of the character back*/
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
 
-    /* delet everything from the canvas */
+    /** delet everything from the canvas */
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    /* every interval is cleared to stop the game */
+    /** every interval is cleared to stop the game */
     clearAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i);
     }
 
-    /* ends the game by clearing everythingand shows the end screen */
+    /** ends the game and shows the end screen */
     endGame(value) {
         this.world_sound_theme.pause();
         this.clearAllIntervals();

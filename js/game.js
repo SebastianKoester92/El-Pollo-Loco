@@ -6,7 +6,7 @@ let throwDirection = 0;
 let endbossGotHitIndex = 0;
 let world_sound_index = 0;
 
-/* Shows the specific screen that is needed */
+/** Shows the specific screen that is needed */
 function showScreen(screenToShow) {
     document.getElementById('canvas').classList.add('d-none');
     document.getElementById('startScreen').classList.add('d-none');
@@ -16,27 +16,27 @@ function showScreen(screenToShow) {
     document.getElementById(screenToShow).classList.remove('d-none');  
 }
 
-/* turn on mobile buttons */
+/** turn on mobile buttons */
 function showMobileButtons() {
     document.getElementById('mobileButtons').classList.remove('d-none');
 }
 
-/* turn off mobile buttons */
+/** turn off mobile buttons */
 function hideMobileButtons() {
     document.getElementById('mobileButtons').classList.add('d-none');
 }
 
-/* turn on mute / unmute button while game is active*/
+/** turn on mute / unmute button while game is active*/
 function showMuteOverlay() {
     document.getElementById('muteOverlay').classList.remove('d-none'); 
 }
 
-/* turn off mute / unmute button while game is inactive or mobile buttons are active*/
+/** turn off mute / unmute button while game is inactive or mobile buttons are active*/
 function hideMuteOverlay() {
     document.getElementById('muteOverlay').classList.add('d-none'); 
 }
 
-/* starts and creates the game */
+/** starts and creates the game */
 function init() {
     checkMobileDevice();
     showScreen('canvas');
@@ -46,7 +46,7 @@ function init() {
     world = new World(canvas, keyboard);
 }
 
-/* checks if the device uses a touchscreen. If yes, the mobile buttons
+/** checks if the device uses a touchscreen. If yes, the mobile buttons
 will be active at the start of the game */
 function checkMobileDevice() {
     if('ontouchstart' in window || navigator.maxTouchPoints) {
@@ -56,7 +56,7 @@ function checkMobileDevice() {
     }
 }
 
-/* mutes the music ingame. The music is turned off by default */
+/** mutes the music ingame. The music is turned off by default */
 function muteMusic(div) {
     if(world_sound_index == 0) {
         world_sound_index = 1;
@@ -66,7 +66,7 @@ function muteMusic(div) {
     changeMuteButton(div);
 }
 
-/* changes the mute / unmute icon as the music is turned on or off */
+/** changes the mute / unmute icon as the music is turned on or off */
 function changeMuteButton(div) {
     document.getElementById('muteButtonDiv').classList.add('d-none');
     document.getElementById('unmuteButtonDiv').classList.add('d-none');
@@ -77,7 +77,7 @@ function changeMuteButton(div) {
     document.getElementById(div).classList.remove('d-none');
 }
 
-/* checks if a button is pressed */
+/** checks if a button is pressed */
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == 39) {
         keyboard.right = true;
@@ -99,7 +99,7 @@ window.addEventListener("keydown", (e) => {
     }
 });
 
-/* checks if a button isn't pressed */
+/** checks if a button isn't pressed */
 window.addEventListener("keyup", (e) => {
     if (e.keyCode == 39) {
         keyboard.right = false;
@@ -121,7 +121,7 @@ window.addEventListener("keyup", (e) => {
     }
 });
 
-/* checks if a mobile button is pressed */
+/** checks if a mobile button is pressed */
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnLeft').addEventListener('touchstart', (e) => {
         e.preventDefault();

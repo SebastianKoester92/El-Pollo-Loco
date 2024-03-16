@@ -71,20 +71,20 @@ class Endboss extends MovableObject {
     animate() {
         setInterval(() => {
             if(this.health <= 0) {
-                this.playAnimation(this.deadImages); /* dead animation */
+                this.playAnimation(this.deadImages); /** dead animation */
                 endbossGotHitIndex = 0;
                 this.deadIndex = 1;  
             } else if(this.hurtIndex == 1) {
-                this.playAnimation(this.hurtImages); /* hurt animation */
+                this.playAnimation(this.hurtImages); /** hurt animation */
                 this.hurtIndex = 0;
                 this.x -= 25;
             } else if(this.health < 100) {
-                this.playAnimation(this.attackImages); /* attack animation */
+                this.playAnimation(this.attackImages); /**attack animation */
                 this.x -= 25;      
             }else if(positionOfChar > 2150) {
-                this.playAnimation(this.alertImages); /* alert animation */     
+                this.playAnimation(this.alertImages); /** alert animation */     
             } else {
-                this.playAnimation(this.walkingImages); /* walk animation */
+                this.playAnimation(this.walkingImages); /** walk animation */
             }      
         }, 200);
     }
