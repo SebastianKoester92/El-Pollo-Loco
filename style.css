@@ -31,14 +31,22 @@ canvas {
 }
 
 @media (max-width: 600px) {
-    .turnDeviceNotice {
+    .turnDeviceNotice, body {
         display: flex !important;
+        width: 160% !important;
+        height: 180% !important;
     }
+}
+
+@media only screen and (max-width: 1024px) {
+    .header {
+        display: none;
+    }  
 }
 
 @media only screen and (max-width: 720px) {
     canvas {
-        width: 100vw !important;
+        width: 100vw !important; 
     }
 }
 
@@ -197,7 +205,7 @@ canvas {
     margin-top: 149px;
 }
 
-.muteButtonDiv, .muteButtonDiv2, .muteButtonDiv3:hover {
+.muteButtonDiv:hover, .muteButtonDiv2:hover, .muteButtonDiv3:hover {
     cursor: pointer;
     scale: 1.05;
 }
