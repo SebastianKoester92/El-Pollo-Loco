@@ -37,10 +37,6 @@ class World {
             this.checkCollisions();
         }, 20);
         setInterval(() => {
-            this.characterGotHit();
-        }, 500);
-        
-        setInterval(() => {
             if(endbossGotHitIndex == 1) {
                 this.statusBarHealthEndboss.x -= 25;
             }
@@ -71,6 +67,7 @@ class World {
         this.bottleCollisionWithEnemy();  
         this.collisionWithCoin();
         this.collisionWithSalsa();
+        this.characterGotHit();
     }
 
     /* checks the character collision with an enemy */
@@ -91,7 +88,7 @@ class World {
     /* checks if the character got hit by an enemy */
     characterGotHit() {
         this.level.enemies.forEach( (enemy, i) => {
-            if(this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.health >= 1) {
+            if(this.character.isColliding(enemy) && !this.character.isAboveGround() && enemy.health >= 1  && !this.character.isHurt()) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
             }
@@ -247,6 +244,7 @@ class World {
         }
     }
 
+    /* flips the image of the character */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
@@ -254,6 +252,7 @@ class World {
         mo.x = mo.x * -1;
     }
 
+    /* flips the image of the character back*/
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
