@@ -1,16 +1,16 @@
 class SmallChicken extends MovableObject {
 
-    y = 360;
-    width = 70;
-    height = 70;
+    y = 380;
+    width = 50;
+    height = 50;
     deadBody = true;
     health = 20;
     enemyType = 1;
     offset = {
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0
+        top: 5,
+        left: 5,
+        right: 5,
+        bottom: 5
     };
 
     dead_sound = new Audio('./audio/dead_chicken.wav');
