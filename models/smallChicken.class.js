@@ -7,10 +7,10 @@ class SmallChicken extends MovableObject {
     health = 20;
     enemyType = 1;
     offset = {
-        top: 5,
-        left: 5,
-        right: 5,
-        bottom: 5
+        top: 0,
+        left: 10,
+        right: 10,
+        bottom: 0
     };
 
     dead_sound = new Audio('./audio/dead_chicken.wav');

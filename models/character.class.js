@@ -7,7 +7,7 @@ class Character extends MovableObject {
     offset = {
         top: 130,
         left: 30,
-        right: 30,
+        right: 45,
         bottom: 20
     };
     
@@ -90,6 +90,7 @@ class Character extends MovableObject {
             }
             this.world.camera_x = -this.x + 100;   
         }, 1500 / 60);
+
 
         /** checks if the character is dead, hurt, above ground or moving and plays the specific animation */
         setInterval(() => {

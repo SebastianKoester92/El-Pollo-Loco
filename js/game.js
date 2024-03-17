@@ -13,6 +13,7 @@ function showScreen(screenToShow) {
     document.getElementById('controlsScreen').classList.add('d-none');
     document.getElementById('lostScreen').classList.add('d-none');
     document.getElementById('wonScreen').classList.add('d-none');
+    document.getElementById('aboutScreen').classList.add('d-none');
     document.getElementById(screenToShow).classList.remove('d-none');  
 }
 

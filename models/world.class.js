@@ -35,7 +35,7 @@ class World {
             }
             this.checkThrowObjects();
             this.checkCollisions();
-        }, 20);
+        }, 1);
         setInterval(() => {
             if(endbossGotHitIndex == 1) {
                 this.statusBarHealthEndboss.x -= 25;
@@ -237,7 +237,7 @@ class World {
         }
 
         mo.draw(this.ctx);
-        //mo.drawFrame(this.ctx);
+        mo.drawFrame(this.ctx);
 
         if(mo.otherDirection){
             this.flipImageBack(mo);

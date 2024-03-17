@@ -37,13 +37,14 @@
         <canvas id="canvas" width="720" height="480" class="d-none"></canvas>
         <div id="startScreen" class="startScreen">
             <button id="startGameButton" class="startScreenButton" onclick="init()">Start Game</button>
+            <button id="controlsButton" class="startScreenButton" onclick="showScreen('controlsScreen')">Controls</button>
+            <button id="aboutButton" class="startScreenButton" onclick="showScreen('aboutScreen')">About</button>
             <div id="muteButtonDiv" class="muteButtonDiv d-none" onclick="muteMusic('unmuteButtonDiv')">
                 <img class="muteButtonImage" src="./img/12_mobile_button/mute.png">  
             </div>
             <div id="unmuteButtonDiv" class="muteButtonDiv" onclick="muteMusic('muteButtonDiv')">
                 <img class="muteButtonImage" src="./img/12_mobile_button/unmute.png">  
             </div>
-            <button id="controlsButton" class="startScreenButton" onclick="showScreen('controlsScreen')">Controls</button>
             <button id="fullscreenOnButton" class="startScreenButton d-none" onclick="fullscreen()">Fullscreen On</button> 
         </div>
         <div id="controlsScreen" class="controlsScreen d-none">
@@ -74,6 +75,18 @@
                 </div>
                 <span>Press D key to throw bottles at enemies</span>
             </div>   
+        </div>
+        <div id="aboutScreen" class="controlsScreen d-none">
+            <div style="margin-left: 20px;">
+                <button class="startScreenButton" onclick="showScreen('startScreen')">Back</button>
+            </div>
+            <div class="controlsHeader">
+                <span>About</span>
+            </div>
+            <div class="aboutDescription">
+                <button id="ImpressumButton" class="startScreenButton" onclick="window.open('./impressum.html', '_blank')">Impressum</button>
+                <button id="DatenschutzButton" class="startScreenButton" onclick="window.open('./datenschutz.html', '_blank')">Datenschutz</button> 
+            </div>
         </div>
         <div id="lostScreen" class="lostScreen d-none">
             <button id="restartGameButton" class="startScreenButton" onclick="init()">Restart Game</button>
