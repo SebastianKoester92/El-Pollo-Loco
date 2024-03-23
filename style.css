@@ -30,7 +30,7 @@ canvas {
     display: block;
 }
 
-@media (max-width: 660px) {
+@media (max-width: 650px) {
     .turnDeviceNotice {
         display: flex !important;
     }
@@ -39,9 +39,9 @@ canvas {
     }
 }
 
-@media (max-width: 720px) {
+@media only screen and (max-width: 1024px) {
     .header {
-        display: none !important;
+        display: none !important; 
     }
 }
 

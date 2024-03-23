@@ -35,12 +35,7 @@ class World {
             }
             this.checkThrowObjects();
             this.checkCollisions();
-        }, 1);
-        setInterval(() => {
-            if(endbossGotHitIndex == 1) {
-                this.statusBarHealthEndboss.x -= 25;
-            }
-        }, 200);   
+        }, 1);   
     }
 
     /** checks if a bottle is thrown, by the direction the character is facing */

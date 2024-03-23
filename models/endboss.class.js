@@ -11,7 +11,7 @@ class Endboss extends MovableObject {
         right: 60,
         bottom: 70
     };
-    speed = 30;
+    speed = 2;
     hurtIndex = 0;
     deadIndex = 0;
     dead_sound = new Audio('./audio/dead_chicken.wav');
@@ -66,6 +66,7 @@ class Endboss extends MovableObject {
         this.loadImages(this.attackImages);
         this.x = 2600;
         this.animate();
+        this.walkAnimation();
     }
 
     animate() {
@@ -75,8 +76,7 @@ class Endboss extends MovableObject {
             } else if(this.hurtIndex == 1) {
                 this.hurtAnimation();    
             } else if(this.health < 100) {
-                this.walkAnimation();
-                //this.attackAnimation();          
+                this.playAnimation(this.walkingImages);          
             }else if(positionOfChar > 2150) {
                 this.alertAnimation();       
             }     
@@ -93,16 +93,14 @@ class Endboss extends MovableObject {
     /** hurt animation for the endboss */
     hurtAnimation() {
         this.playAnimation(this.hurtImages); 
-        this.hurtIndex = 0;
-        this.x -= 25;  
+        this.hurtIndex = 0;  
     }
 
     /**attack animation for the endboss
      * is triggered after the first bottle hit the endboss
      */
     attackAnimation() {
-        this.playAnimation(this.attackImages); 
-        this.x -= 25; 
+        this.playAnimation(this.attackImages);  
     }
 
     /** alert animation for the endboss if the character is close enough*/
@@ -114,8 +112,11 @@ class Endboss extends MovableObject {
      * is triggered after the first bottle hit the endboss
      */
     walkAnimation() {
-        this.playAnimation(this.walkingImages);
-        this.x -= 25;   
+        setInterval(() => {
+            if(this.health < 100 && this.health > 0) {
+                this.moveLeft();
+            }                                  
+        }, 1000 / 60)
     }
 
 

@@ -10,15 +10,17 @@ class StatusBarHealthEndboss extends DrawableObject {
     ];
 
     percentage = 100;
+    speed = 2;
 
     constructor() {
         super();
         this.loadImages(this.imagesHealth);
-        this.x = 2650;
+        this.x = 2600;
         this.y = 0;
         this.width = 160;
         this.height = 48;
         this.setPercentage(100);
+        this.moveHealthBar();
     }
 
     /** selects the image depending on the percentage */
@@ -43,5 +45,14 @@ class StatusBarHealthEndboss extends DrawableObject {
         } else {
             return 0;
         }
+    }
+
+
+    moveHealthBar() {
+        setInterval(() => {
+            if(endbossGotHitIndex == 1) {
+                this.x -= this.speed;
+            }
+        }, 1000 / 60);
     }
 }
