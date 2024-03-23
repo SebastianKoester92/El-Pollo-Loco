@@ -40,7 +40,7 @@ class ThrowableObject extends MovableObject {
         this.animate();
     }
 
-    /** thows the bottle depending on the directin the character is facing */
+    /** thows the bottle depending on the direction the character is facing */
     throw() {
         this.speedY = 30;
         this.applyGravity();

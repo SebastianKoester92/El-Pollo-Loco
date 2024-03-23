@@ -204,11 +204,9 @@ class Character extends MovableObject {
         }, 250);  
     }
 
-
-
     /** this function sets the sleep value for the character with 5 seconds delay */
     playIdle() {
-        if (!this.isAboveGround()) {
+        if (!this.isAboveGround() && this.y > 135) {
             setTimeout(() => {
                 this.isMoving = 4;
             }, 4000);   

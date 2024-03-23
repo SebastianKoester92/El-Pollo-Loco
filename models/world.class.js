@@ -102,7 +102,7 @@ class World {
                         endbossGotHitIndex = 1;
                         this.statusBarHealthEndboss.percentage = enemy.health;
                         this.statusBarHealthEndboss.setPercentage(this.statusBarHealthEndboss.percentage);   
-                    } 
+                    }
                     this.removeChickenFromMap(y);
                     bottle.bottleSplashIndex = 1;
                     bottle.bottleFlyIndex = 0;
