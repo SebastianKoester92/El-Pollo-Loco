@@ -72,6 +72,7 @@ class Endboss extends MovableObject {
     animate() {
         setInterval(() => {
             if(this.health <= 0) {
+                endbossGotHitIndex = 0;
                 this.deadAnimation();
             } else if(this.hurtIndex == 1) {
                 this.hurtAnimation();    

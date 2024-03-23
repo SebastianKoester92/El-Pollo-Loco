@@ -47,7 +47,7 @@ class StatusBarHealthEndboss extends DrawableObject {
         }
     }
 
-
+    /** moves the HealthBar of the endboss while he is moving left */
     moveHealthBar() {
         setInterval(() => {
             if(endbossGotHitIndex == 1) {
