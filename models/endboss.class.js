@@ -71,22 +71,62 @@ class Endboss extends MovableObject {
     animate() {
         setInterval(() => {
             if(this.health <= 0) {
-                this.playAnimation(this.deadImages); /** dead animation */
-                endbossGotHitIndex = 0;
-                this.deadIndex = 1;  
+                this.deadAnimation();
             } else if(this.hurtIndex == 1) {
-                this.playAnimation(this.hurtImages); /** hurt animation */
-                this.hurtIndex = 0;
-                this.x -= 25;
+                this.hurtAnimation();    
             } else if(this.health < 100) {
-                this.playAnimation(this.attackImages); /**attack animation */
-                this.x -= 25;      
+                this.walkAnimation();
+                //this.attackAnimation();          
             }else if(positionOfChar > 2150) {
-                this.playAnimation(this.alertImages); /** alert animation */     
-            } else {
-                this.playAnimation(this.walkingImages); /** walk animation */
-            }      
-        }, 200);
+                this.alertAnimation();       
+            }     
+        }, 150);
     }
 
+    /** dead animation for the endboss*/
+    deadAnimation() {
+        this.playAnimation(this.deadImages); 
+        endbossGotHitIndex = 0;
+        this.deadIndex = 1;  
+    }
+
+    /** hurt animation for the endboss */
+    hurtAnimation() {
+        this.playAnimation(this.hurtImages); 
+        this.hurtIndex = 0;
+        this.x -= 25;  
+    }
+
+    /**attack animation for the endboss
+     * is triggered after the first bottle hit the endboss
+     */
+    attackAnimation() {
+        this.playAnimation(this.attackImages); 
+        this.x -= 25; 
+    }
+
+    /** alert animation for the endboss if the character is close enough*/
+    alertAnimation() {
+        this.playAnimation(this.alertImages);   
+    }
+
+    /** walk animation for the endboss
+     * is triggered after the first bottle hit the endboss
+     */
+    walkAnimation() {
+        this.playAnimation(this.walkingImages);
+        this.x -= 25;   
+    }
+
+
+
+
+
+
+
+
+
+
 }
+
+

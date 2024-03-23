@@ -169,7 +169,7 @@ class World {
     removeSplashedBottle(i){
         setTimeout(() => {
             this.throwableObjects.splice(i, 1);
-        }, 300) ;
+        }, 300);
     }
 
     /** removes the chicken that got killed by the character or the bottle */
@@ -237,7 +237,7 @@ class World {
         }
 
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
+        //mo.drawFrame(this.ctx);
 
         if(mo.otherDirection){
             this.flipImageBack(mo);
