@@ -72,36 +72,28 @@ class Endboss extends MovableObject {
     animate() {
         setInterval(() => {
             if(this.health <= 0) {
-                endbossGotHitIndex = 0;
+                endbossIsDead = 1;
                 this.deadAnimation();
-            } else if(this.hurtIndex == 1) {
-                this.hurtAnimation();    
-            } else if(this.health < 100) {
+            } else if(this.hurtIndex == 1 && this.health > 10) {
+                this.hurtAnimation();
+            } else if(this.health < 100 && this.health > 0) {
                 this.playAnimation(this.walkingImages);          
             }else if(positionOfChar > 2150) {
                 this.alertAnimation();       
             }     
-        }, 150);
+        }, 200);
     }
 
     /** dead animation for the endboss*/
     deadAnimation() {
         this.playAnimation(this.deadImages); 
         endbossGotHitIndex = 0;
-        this.deadIndex = 1;  
     }
 
     /** hurt animation for the endboss */
     hurtAnimation() {
         this.playAnimation(this.hurtImages); 
-        this.hurtIndex = 0;  
-    }
-
-    /**attack animation for the endboss
-     * is triggered after the first bottle hit the endboss
-     */
-    attackAnimation() {
-        this.playAnimation(this.attackImages);  
+        this.hurtIndex = 0; 
     }
 
     /** alert animation for the endboss if the character is close enough*/
@@ -117,7 +109,7 @@ class Endboss extends MovableObject {
             if(this.health < 100 && this.health > 0) {
                 this.moveLeft();
             }                                  
-        }, 1000 / 60)
+        }, 1000 / 80)
     }
 
 

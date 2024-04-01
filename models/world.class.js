@@ -35,7 +35,15 @@ class World {
             }
             this.checkThrowObjects();
             this.checkCollisions();
+            this.checkEndbossIsDead();
         }, 1);   
+    }
+
+    checkEndbossIsDead() {
+        if(endbossIsDead == 1) {
+            endbossIsDead = 0;
+            this.endGame('wonScreen');
+        }
     }
 
     /** checks if a bottle is thrown, by the direction the character is facing */
@@ -173,9 +181,7 @@ class World {
             this.level.enemies.forEach( (enemy, i) => {
                 if(enemy.health <= 0 && enemy.enemyType == 1) {
                     this.level.enemies.splice(i, 1);  
-                } else if(enemy.health <= 0 && enemy.enemyType == 2) {
-                    this.endGame('wonScreen');       
-                } 
+                }
             });
         }, 700);    
     }
@@ -265,12 +271,18 @@ class World {
 
     /** ends the game and shows the end screen */
     endGame(value) {
-        this.world_sound_theme.pause();
-        this.clearAllIntervals();
-        this.clearCanvas();
-        hideMobileButtons();
-        hideMuteOverlay();
-        showScreen(value);
+
+
+
+        setTimeout(() => {
+            this.world_sound_theme.pause();
+            this.clearAllIntervals();
+            this.clearCanvas();
+            hideMobileButtons();
+            hideMuteOverlay();
+            showScreen(value); 
+        }, 250); 
+        
     }
 }
 

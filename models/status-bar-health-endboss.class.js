@@ -53,6 +53,6 @@ class StatusBarHealthEndboss extends DrawableObject {
             if(endbossGotHitIndex == 1) {
                 this.x -= this.speed;
             }
-        }, 1000 / 60);
+        }, 1000 / 80);
     }
 }

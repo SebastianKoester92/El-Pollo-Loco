@@ -4,6 +4,7 @@ let keyboard = new Keyboard();
 let positionOfChar = 0;
 let throwDirection = 0;
 let endbossGotHitIndex = 0;
+let endbossIsDead = 0;
 let world_sound_index = 0;
 
 /** Shows the specific screen that is needed */
