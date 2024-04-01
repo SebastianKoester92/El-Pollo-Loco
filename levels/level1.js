@@ -1,6 +1,6 @@
 let level1;
 
-/** it creates the level with a function, so the game is restartable */
+/**creates the level with a function, so the game is restartable */
 function initLevel() {
 
  level1 = new Level(

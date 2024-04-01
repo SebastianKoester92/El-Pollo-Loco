@@ -177,11 +177,11 @@ class Character extends MovableObject {
      */
     checkCharacterForSleep() {
         setInterval(() => {
-            if (!this.world.keyboard.right && !this.world.keyboard.left && this.isMoving < 3 && !this.isAboveGround() && !this.isHurt()) {
+            if (!this.world.keyboard.right && !this.world.keyboard.left && this.isMoving < 3 && this.y >= 135 && !this.isHurt()) {
                 this.playIdle();
                 this.isMoving = 3;
             }
-        }, 2000);  
+        }, 1500);  
     }
 
     /** sleep animation for the character if he doesn't move for 5 seconds */
@@ -206,7 +206,7 @@ class Character extends MovableObject {
 
     /** this function sets the sleep value for the character with 5 seconds delay */
     playIdle() {
-        if (!this.isAboveGround() && this.y > 135) {
+        if (!this.isAboveGround() && this.y >= 135) {
             setTimeout(() => {
                 this.isMoving = 4;
             }, 4000);   

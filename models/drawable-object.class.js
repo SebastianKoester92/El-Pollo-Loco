@@ -35,8 +35,7 @@ drawFrame(ctx) {
     }
 }
 
-
-
+/** loads all images for each object */
 loadImages(arr) {
     arr.forEach((path) => {
         let img = new Image();

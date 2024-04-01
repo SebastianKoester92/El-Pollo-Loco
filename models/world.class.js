@@ -271,9 +271,6 @@ class World {
 
     /** ends the game and shows the end screen */
     endGame(value) {
-
-
-
         setTimeout(() => {
             this.world_sound_theme.pause();
             this.clearAllIntervals();
@@ -281,8 +278,7 @@ class World {
             hideMobileButtons();
             hideMuteOverlay();
             showScreen(value); 
-        }, 250); 
-        
+        }, 250);   
     }
 }
 

@@ -38,6 +38,11 @@ canvas {
         display: none !important;
     }
 }
+@media only screen and (min-width: 1024px) {
+    .muteUnmuteDiv {
+        margin-top: 180px !important;
+    }
+}
 
 @media only screen and (max-width: 1024px) {
     .header {
@@ -219,7 +224,7 @@ canvas {
     justify-content: center;
     width: 720px;
     height: 480px;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 .muteButtonDiv:hover, .muteButtonDiv2:hover, .muteButtonDiv3:hover {
